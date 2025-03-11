@@ -1,0 +1,93 @@
+import random
+
+def print_welcome():
+    print("\nWelcome to TIC TAC TOE!\n")
+
+def print_rules():
+    print("Game Board Positions:")
+    print(" 7 | 8 | 9 ")
+    print("-----------")
+    print(" 4 | 5 | 6 ")
+    print("-----------")
+    print(" 1 | 2 | 3 ")
+    print("\nEnter a position (1-9) to make a move.")
+
+def get_player_names():
+    return input("Enter Player 1 name: ").capitalize(), input("Enter Player 2 name: ").capitalize()
+
+def choose_marker():
+    while True:
+        marker = input("\nPlayer 1, choose X or O: ").upper()
+        if marker in ('X', 'O'):
+            return (marker, 'O' if marker == 'X' else 'X')
+        print("Invalid choice. Please select X or O.")
+
+def first_turn(player1, player2):
+    return player1 if random.choice([True, False]) else player2
+
+def display_board(board):
+    print(f"\n {board[7]} | {board[8]} | {board[9]} ")
+    print("-----------")
+    print(f" {board[4]} | {board[5]} | {board[6]} ")
+    print("-----------")
+    print(f" {board[1]} | {board[2]} | {board[3]} \n")
+
+def is_valid_move(board, position):
+    return board[position] == ' '
+
+def make_move(board, position, marker):
+    board[position] = marker
+
+def check_winner(board, marker):
+    winning_patterns = [(1,2,3), (4,5,6), (7,8,9), (1,4,7), (2,5,8), (3,6,9), (1,5,9), (3,5,7)]
+    return any(board[a] == board[b] == board[c] == marker for a, b, c in winning_patterns)
+
+def is_board_full(board):
+    return ' ' not in board[1:]
+
+def get_player_move(board, player_name):
+    while True:
+        try:
+            position = int(input(f"{player_name}, enter position (1-9): "))
+            if position in range(1,10) and is_valid_move(board, position):
+                return position
+            print("Invalid move. Try again.")
+        except ValueError:
+            print("Enter a number between 1 and 9.")
+
+def play_game():
+    print_welcome()
+    print_rules()
+    
+    player1, player2 = get_player_names()
+    p1_marker, p2_marker = choose_marker()
+    turn = first_turn(player1, player2)
+    print(f"\n{turn} goes first!")
+    
+    board = [' '] * 10
+    game_on = True
+    
+    while game_on:
+        display_board(board)
+        marker = p1_marker if turn == player1 else p2_marker
+        position = get_player_move(board, turn)
+        make_move(board, position, marker)
+
+        if check_winner(board, marker):
+            display_board(board)
+            print(f"Congratulations {turn}, you win!")
+            game_on = False
+        elif is_board_full(board):
+            display_board(board)
+            print("It's a draw!")
+            game_on = False
+        else:
+            turn = player1 if turn == player2 else player2
+    
+    if input("Play again? (y/n): ").lower() == 'y':
+        play_game()
+    else:
+        print("Thanks for playing!")
+
+if __name__ == "__main__":
+    play_game()
