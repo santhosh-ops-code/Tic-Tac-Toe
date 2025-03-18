@@ -1,19 +1,19 @@
-# 🎮 Tic-Tac-Toe in C++
+🎮 Tic-Tac-Toe in C++
 
-## 📌 Project Overview
+📌 Project Overview
 This is a simple **Tic-Tac-Toe game** built using **C++**. The game allows two players to play in a command-line interface (CLI). It includes board validation and a clean user experience.
 
-## 🚀 Features
+🚀 Features
 ✅ Two-player mode  
 ✅ Clear and interactive command-line interface  
 ✅ Automatic win/tie detection  
 ✅ Simple and efficient game logic  
 
-## 🛠 Technologies Used
-- **C++** for game logic  
-- **Standard Template Library (STL)** for efficient operations  
+🛠 Technologies Used
+- C++ for game logic  
+- Standard Template Library (STL)** for efficient operations  
 
-## 📂 Project Structure
+📂 Project Structure
 📦 Tic-Tac-Toe ┣ 📜 main.cpp # Main game logic ┣ 📜 game.cpp # Game functions ┣ 📜 game.h # Header file for game functions ┣ 📜 README.md # Project documentation ┗ 📜 LICENSE # License file
 
 How to Run the Game
@@ -45,4 +45,4 @@ This project is licensed under the MIT License – feel free to use and modify i
 
 💼 LinkedIn: (https://www.linkedin.com/in/santhosh-rao-kudali-261734294/)
 
-📧 Email: kudalisanthoshrao@gmail.com
+📧 Email: srkudali@gmail.com
